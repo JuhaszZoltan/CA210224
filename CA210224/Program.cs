@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CA210224
 {
     class Program
     {
+        static Random rnd = new Random();
         static void Main()
         {
             //Feladatok0102();
@@ -16,21 +18,95 @@ namespace CA210224
             //Feladatok0104_b();
             //Feladatok0106_b();
             //Feladatok0107();
-            Feladatok0110();
+            //Feladatok0110();
+            //Feladatok0111();
+
+            //DatumIdoF01();
+            //RandomDolgok();
+
             Console.ReadKey();
         }
 
+        private static void RandomDolgok()
+        {
+            //[0, int.MaxValue)
+            //int v1 = rnd.Next();
+
+            //[0, 10)
+            //int v2 = rnd.Next(10);
+
+            //[-200, 200]
+            //int veletlen = rnd.Next(-200, 201);
+
+            //0 és 1 közötti 64 biten ábrázolt lebegőpontos szám
+            //double veletlenDouble = rnd.NextDouble();
+        }
+        private static void DatumIdoF01()
+        {
+            Console.Write("üzemidő másodpercben: ");
+            long sec = long.Parse(Console.ReadLine());
+
+            //TimeSpan elteltIdo = new TimeSpan(sec * 10000000);
+            TimeSpan elteltIdo = new TimeSpan(0, 0, (int)sec);
+
+            Console.WriteLine($"{elteltIdo.Days}.{elteltIdo.Hours}:{elteltIdo.Minutes}:{elteltIdo.Seconds}");
+
+            Console.WriteLine(elteltIdo.Days);
+
+
+            TimeSpan ido01 = new TimeSpan(10, 10, 00);
+            TimeSpan ido02 = new TimeSpan(2, 20, 00);
+
+            Console.WriteLine(ido01 + ido02);
+
+            DateTime szul = new DateTime(1990, 07, 11);
+            DateTime fog = szul - new TimeSpan(270, 0, 0, 0);
+            Console.WriteLine(DateTime.Now - szul);
+            Console.WriteLine(szul.ToLongDateString());
+
+            Console.WriteLine();
+        }
+        private static void Feladatok0111()
+        {
+            Console.Write("hordó térfogata(l): ");
+            int hordo = int.Parse(Console.ReadLine());
+            Console.Write("kancsó térfogata(l): ");
+            int kancso = int.Parse(Console.ReadLine());
+
+            Console.WriteLine($"{hordo / kancso} teli kancsómérhető ki");
+            Console.WriteLine($"a hordóban { hordo % kancso} liter cucc marad");
+            Console.WriteLine("a hordó és a kancsó hányadosa: {0:0.00}", hordo / (float)kancso);
+        }
         private static void Feladatok0110()
         {
-            Console.Write("súlyod: ");
-            Console.Write("magasságod: ");
+            Console.Write("súlyod (kg): ");
+            float kg = float.Parse(Console.ReadLine());
+            Console.Write("magasságod (cm): ");
+            float m = float.Parse(Console.ReadLine()) / 100;
+            float tti = kg / (float)Math.Pow(m, 2);
 
-            float tti = 0;
+            Console.WriteLine("Testtömegindexed alapját te az alábbi testsúlykategóriába tartozol:");
+            if (tti < 16) Console.WriteLine("súlyos soványság");
+            else if (tti < 17) Console.WriteLine("mérsékelt soványság");
+            else if (tti < 18.5) Console.WriteLine("enyhe soványság");
+            else if (tti < 25) Console.WriteLine("normális testsúly");
+            else if (tti < 30) Console.WriteLine("túlsúlyos");
+            else if (tti < 35) Console.WriteLine("I.fokú elhízás");
+            else if (tti < 40) Console.WriteLine("II. fokú elhízás");
+            else Console.WriteLine("III. fokú (súlyos) elhízás");
 
-            if (tti < 16) Console.WriteLine("");
-            else if (tti < 17) Console.WriteLine("....");
+
+            /*
+            if(feltétel)
+            {
+                kód, ha a feltétel igaz
+            }
+            else
+            {
+                kód, ha a feltétel hamis
+            }
+            */
         }
-
         private static void Feladatok0107()
         {
             Console.Write("a = ");

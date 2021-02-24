@@ -48,7 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="SPEC\datum_ido.pdf" />
     <None Include="SPEC\feladatok1.pdf" />
+    <None Include="SPEC\veletlenszamok_prezi.pdf" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
